@@ -5,9 +5,9 @@
 | name                 | string     |null: false              |
 | email                | string     |null: false, unique: true|
 | encrypted_password   | string     |null: false              |
-| family_name           | string     |null: false              |
+| family_name          | string     |null: false              |
 | last_name            | string     |null: false              |
-| kana_family_name      | string     |null: false              |
+| kana_family_name     | string     |null: false              |
 | kana_last_name       | string     |null: false              |
 | birthday             | date       |null: false              |
 
@@ -20,16 +20,15 @@
 
 |Column                |    Type         |Options                         |
 |----------------------|-----------------|--------------------------------|
-| price                | string          |null: false                     |
-| item_name            | string          |null: false                     |
-| item_owner           | string          |null: false                     |
-| instruction          | string          |null: false                     |
-| category             | string          |null: false                     |
-| status               | string          |null: false                     | 
-| delivery_fee         | string          |null: false                     |
+| price                | integer         |null: false                     |
+| name                 | string          |null: false                     |
+| instruction          | text            |null: false                     |
+| category             | integer         |null: false                     |
+| status               | integer         |null: false                     | 
+| delivery_fee         | integer         |null: false                     |
 | prefecture           | integer         |null:false                      |
-| delivery_date        | string          |null: false                     |
-| user_id              | references      |null: false, foreign_key: true  |
+| delivery_date        | integer         |null: false                     |
+| user                 | references      |null: false, foreign_key: true  |
 
 ### Association
  - belongs_to :user
