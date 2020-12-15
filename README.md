@@ -23,7 +23,7 @@
 | price                | integer         |null: false                     |
 | name                 | string          |null: false                     |
 | instruction          | text            |null: false                     |
-| category             | integer         |null: false                     |
+| category_id            | integer         |null: false                     |
 | status_id            | integer         |null: false                     | 
 | delivery_fee_id      | integer         |null: false                     |
 | prefecture_id        | integer         |null:false                      |
