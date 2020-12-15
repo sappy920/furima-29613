@@ -24,10 +24,10 @@
 | name                 | string          |null: false                     |
 | instruction          | text            |null: false                     |
 | category             | integer         |null: false                     |
-| status               | integer         |null: false                     | 
-| delivery_fee         | integer         |null: false                     |
-| prefecture           | integer         |null:false                      |
-| delivery_date        | integer         |null: false                     |
+| status_id            | integer         |null: false                     | 
+| delivery_fee_id      | integer         |null: false                     |
+| prefecture_id        | integer         |null:false                      |
+| delivery_date_id      | integer         |null: false                     |
 | user                 | references      |null: false, foreign_key: true  |
 
 ### Association
@@ -51,7 +51,7 @@
 |Column                 |    Type         | Options                       |
 |-----------------------|-----------------|-------------------------------|
 | post_code             | string          |null: false                    |
-| prefecture            | integer         |null: false                    |
+| prefecture_id         | integer         |null: false                    |
 | city                  | string          |null: false                    |
 | address_number        | string          |null: false                    |
 | apartment             | string          |                               |
