@@ -3,10 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  validates :name, presence:true
-  validates :email, presence: true, uniqueness: true
-  validates :birthday, presence: true
+ with_options presence: true do
+        validates :name
+        validates :email, uniqueness: true
+        validates :birthday
+ end
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'は英数字で入力してください' 
        
