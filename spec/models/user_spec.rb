@@ -11,11 +11,6 @@
         expect(@user).to be_valid
       end
 
-      it "passwordが6文字以上で英数字混合あれば登録できる" do
-        @user.password ="a00000"
-        @user.password_confirmation ="a00000"
-        expect(@user).to be_valid
-      end
     end
     
     context '新規登録がうまくいかないとき' do
@@ -104,13 +99,13 @@
     it "kana_family_nameが空では登録できない" do
       @user.kana_family_name = ""
       @user.valid?
-      expect(@user.errors.full_messages).to include("Kana family name can't be blank")
+      expect(@user.errors.full_messages).to include("Kana family name は全角カタカナで入力して下さい。")
     end
 
     it "kana_last_nameが空では登録できない" do
       @user.kana_last_name = ""
       @user.valid?
-      expect(@user.errors.full_messages).to include("Kana last name can't be blank")
+      expect(@user.errors.full_messages).to include("Kana last name は全角カタカナで入力して下さい。")
     end
 
 
