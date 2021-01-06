@@ -30,6 +30,25 @@
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
 
+    it "emailが＠を含まないと登録できない" do
+      @user.email = "test.gmail.com"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Email は＠を含んでください")
+    end
+    
+
+    
+    it "重複したemailが存在する場合登録できないこと" do
+      @user.save
+      another_user = FactoryBot.build(:user, email: @user.email)
+      another_user.valid?
+      expect(another_user.errors.full_messages).to include("Email has already been taken")
+    end
+ 
+
+
+
+ 
     it "passwordが空では登録できないこと" do
       @user.password = nil
       @user.valid?
@@ -45,11 +64,31 @@
 
 
    it "passwordとpassword_confirmationが不一致では登録できないこと" do
-    @user.password = "123456"
-    @user.password_confirmation = "1234567"
-    @user.valid?
+     @user.password = "a11111"
+     @user.password_confirmation = "b11111"
+     @user.valid?
      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
    end
+
+   it "passwordが半角数字のみの場合は登録できない" do
+     @user.password = "123456"
+     @user.valid?
+     expect(@user.errors.full_messages).to include("Password は半角英数字で入力してください")
+   end
+
+   it "passwordが半角英字のみの場合は登録できない" do
+    @user.password = "aaaaaa"
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Password は半角英数字で入力してください")
+  end
+
+  it "passwordは全角では登録できないこと" do
+    @user.password = "AAAAAA"
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Password は半角英数字で入力してください")
+  end
+
+
 
     it "family nameが空では登録できない" do
       @user.family_name = ""
