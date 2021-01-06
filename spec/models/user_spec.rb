@@ -100,6 +100,20 @@
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name can't be blank")
     end
+
+    it "kana_family_nameが空では登録できない" do
+      @user.kana_family_name = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana family name can't be blank")
+    end
+
+    it "kana_last_nameが空では登録できない" do
+      @user.kana_last_name = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana last name can't be blank")
+    end
+
+
     it "family nameが半角では登録できない" do
       @user.family_name = "tanaka"
       @user.valid?
