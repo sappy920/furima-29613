@@ -23,6 +23,36 @@ require 'rails_helper'
          expect(@item.errors.full_messages).to include("Instruction can't be blank")
      end
 
+     it "category_idが空では登録できない" do
+      @item.category_id = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category can't be blank")
+     end
+
+     it "status_idが空では登録できない" do
+      @item.status_id = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Status can't be blank")
+     end
+
+     it "delivery_fee_idが空では登録できない" do
+      @item.delivery_fee_id = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
+     end
+
+     it "prefecture_idが空では登録できない" do
+      @item.prefecture_id = ""
+      @item.valid?
+     expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+     end
+
+     it "delivery_date_idが空では登録できない" do
+      @item.delivery_date_id = ""
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Delivery date can't be blank")
+     end
+
 
       it "商品のカテゴリーを選択していないと登録できない" do
         @item.category_id = 0
@@ -36,13 +66,11 @@ require 'rails_helper'
          expect(@item.errors.full_messages).to include("Status must be other than 0")
       end
 
-
       it "配送料の負担を選択していないと登録できない" do
          @item.delivery_fee_id = 0
          @item.valid?
          expect(@item.errors.full_messages).to include("Delivery fee must be other than 0")
        end
-
 
       it "配送元の地域を選択していないと登録できない" do
           @item.prefecture_id = 0
@@ -65,11 +93,18 @@ require 'rails_helper'
        end
 
   
-      it "価格の範囲が￥300〜￥9,999,999の間でないと登録できない" do
-         @item.price= 200
+      it "価格が￥300以上でないと登録できない" do
+         @item.price= 299
          @item.valid?
          expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
+
+      it "価格が￥10000000以上では登録できない" do
+        @item.price= 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+     end
+
 
       it "価格が全角では登録できない" do
           @item.price= "３００"
