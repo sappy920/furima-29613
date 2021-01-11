@@ -23,11 +23,11 @@
 | price                | integer         |null: false                     |
 | name                 | string          |null: false                     |
 | instruction          | text            |null: false                     |
-| category_id            | integer         |null: false                     |
+| category_id          | integer         |null: false                     |
 | status_id            | integer         |null: false                     | 
 | delivery_fee_id      | integer         |null: false                     |
 | prefecture_id        | integer         |null:false                      |
-| delivery_date_id      | integer         |null: false                     |
+| delivery_date_id     | integer         |null: false                     |
 | user                 | references      |null: false, foreign_key: true  |
 
 ### Association

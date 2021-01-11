@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :items
+  
  with_options presence: true do
         validates :name
         validates :email, uniqueness: true, format: {with: /\A\S+@\S+\.\S+\z/, message: "は＠を含んでください"}
