@@ -5,6 +5,10 @@ class PurchasesController < ApplicationController
   def index
      @item= Item.find(params[:item_id])
      @item_order = ItemOrder.new
+     if current_user.id == @item.user_id 
+     elsif @item.purchase.present?
+       redirect_to root_path
+     end
   end
 
   def new
