@@ -1,4 +1,6 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
+
 
   def index
      @item= Item.find(params[:item_id])
@@ -29,7 +31,7 @@ class PurchasesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_a764dc561aba0fde2984ed5b"  
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
       amount: @item.price,
       card: purchase_params[:token],   
