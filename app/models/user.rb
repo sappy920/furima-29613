@@ -9,7 +9,7 @@ class User < ApplicationRecord
   
  with_options presence: true do
         validates :name
-        validates :email, uniqueness: true, format: {with: /\A\S+@\S+\.\S+\z/, message: "は＠を含んでください"}
+        validates :email, uniqueness: true, format: {with: /@.+/, message: "は＠を含んでください"}
         validates :birthday
      end
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
